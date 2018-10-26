@@ -6,7 +6,7 @@ const icon = 'https://image.flaticon.com/icons/png/128/2/2046.png';
 export class MoodChanger extends React.Component {
   constructor(props){
     super(props);
-    this.state = {choice:"A... crazy night out", spin: ""}
+    this.state = {choice:"A... party with friends", spin: ""}
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -20,11 +20,11 @@ export class MoodChanger extends React.Component {
     switch(this.state.choice){
       case "A... crazy night out":
         this.setState({choice:"A... romantic date"});
-        this.props.onChange("date");
+        this.props.onChange("restaurant");
         break;
       case "A... romantic date":
         this.setState({choice:"A... party with friends"});
-        this.props.onChange("party");
+        this.props.onChange("bar");
         break;
       case "A... party with friends":
         this.setState({choice:"A... casual lunch out"});
@@ -32,7 +32,7 @@ export class MoodChanger extends React.Component {
         break;
       case "A... casual lunch out":
         this.setState({choice:"A... family gathering"});
-        this.props.onChange("gathering");
+        this.props.onChange("family");
         break;
       case "A... family gathering":
         this.setState({choice:"A... crazy night out"});

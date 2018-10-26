@@ -9,11 +9,12 @@ import {MoodChanger} from '../MoodChanger/MoodChanger';
 export class MoodSlide extends React.Component {
   constructor(props){
     super(props);
-    this.state = {transportChoice:"car", selectedUser:this.props.selectedUser, mood:'club', workingOn:'user'}
+    this.state = {transportChoice:"car", selectedUser:this.props.selectedUser, mood:'party', workingOn:'user'}
     this.handleTransportChange = this.handleTransportChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleMoodChange = this.handleMoodChange.bind(this);
+    this.handleEventMade = this.handleEventMade.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -22,8 +23,8 @@ export class MoodSlide extends React.Component {
   }
 
   handleMoodChange(newMood){
-    console.log(newMood);
     this.setState(currentState => ({ mood : newMood }), () => {});
+    this.props.moodChange(newMood);
   }
 
   handleTransportChange(choice){
@@ -40,12 +41,17 @@ export class MoodSlide extends React.Component {
     this.props.onChange(this.state.selectedUser);
   }
 
-  handleAddressChange(address){
-    console.log("Changing address to "+address);
+  handleAddressChange(address, lat, lng){
     let newUser = this.state.selectedUser;
     newUser.address = address;
+    newUser.lat = lat;
+    newUser.lng = lng;
     this.setState({selectedUser:newUser});
     this.props.onChange(this.state.selectedUser);
+  }
+
+  handleEventMade(){
+    this.props.makeEvent(this.state.mood);
   }
 
   render() {
@@ -63,7 +69,7 @@ export class MoodSlide extends React.Component {
           <MoodChanger onChange={this.handleMoodChange}/>
         </div>
         <div className="buttonWrapper">
-          <button className={"goButton"+(this.props.userSelected && this.props.userMade ? "" : " hidden")}>{"Let's go!"}</button>
+          <button className={"goButton"+(this.props.userSelected && this.props.userMade ? "" : " hidden")} onClick={this.handleEventMade}>{"Let's go!"}</button>
         </div>
       </div>
       </div>

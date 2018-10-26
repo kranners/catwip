@@ -71,12 +71,12 @@
   height: 50px;
   display: inline-block;
   position: relative;
-  text-align: left;
-  width: 106%;
+  text-align: right;
+  width: 144%;
   font-family: 'Gilroy-Light', sans-serif;
   font-size: 35px;
   background-color: black;
-  opacity: 0.5;
+  opacity: 0.3;
   border: none;
   color: white;
   cursor: pointer;
@@ -94,6 +94,11 @@
 .hidden {
   opacity: 0;
   user-select: none;
+}
+
+.hidden:hover {
+  opacity: 0;
+  cursor: default;
 }
 
 .centerText {

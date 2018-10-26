@@ -16,7 +16,9 @@ export class User extends React.Component {
       clicked: 'nothing',
       onSelect: this.props.onSelect,
       editing: false,
-      edittext: ""
+      edittext: "",
+      lat: this.props.lat,
+      lng: this.props.lng
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
@@ -32,7 +34,9 @@ export class User extends React.Component {
       name: nextProps.name,
       address: nextProps.address,
       travelType: nextProps.travelType,
-      editing: nextProps.edited
+      editing: nextProps.edited,
+      lat: nextProps.lat,
+      lng: nextProps.lng
     }), () => {});
   }
 
@@ -73,7 +77,9 @@ export class User extends React.Component {
       address:this.state.address,
       travelType:this.state.travelType,
       usercolor:this.state.usercolor,
-      id:this.state.id
+      id:this.state.id,
+      lat:this.state.lat,
+      lng:this.state.lng
     };
     this.props.onSelect(user);
   }

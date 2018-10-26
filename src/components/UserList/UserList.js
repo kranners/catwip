@@ -31,6 +31,10 @@ export class UserList extends React.Component {
     if (oldList !== this.state.list){
       this.setState({list: oldList});
     }
+    //This is when we should make our event happen
+    if(nextProps.makeNow){
+      this.props.pushEvent(this.state.list);
+    }
   }
 
   newUser(){
@@ -40,7 +44,9 @@ export class UserList extends React.Component {
       travelType: "car",
       usercolor: "hsl("+(360 * Math.random())+','+(25 + 70 * Math.random())+'%,'+(85 + 10 * Math.random())+'%)',
       id: this.state.id,
-      edited: false
+      edited: false,
+      lat: 0,
+      lng: 0
     }
   }
 
@@ -72,7 +78,7 @@ export class UserList extends React.Component {
 
   render () {
     const list = this.state.list.map((user, index)=> {
-      return <User edited={user.edited} name={user.name} travelType={user.travelType} address={user.address} usercolor={user.usercolor} key={user.id} id={user.id} onRemove={this.removeUser} onSelect={this.props.onSelect}/>
+      return <User lat={user.lat} lng={user.lng} edited={user.edited} name={user.name} travelType={user.travelType} address={user.address} usercolor={user.usercolor} key={user.id} id={user.id} onRemove={this.removeUser} onSelect={this.props.onSelect}/>
     })
     return (
       <div>

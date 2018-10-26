@@ -3,10 +3,11 @@
 
 const apiKey = 'OdeHnyVwAcgIKIbHDyZRY3iBdcmXtWcLtVfpd2aOEHoUHzeCtaq2yDiFp_zO7hja8Yad4eLXc4MyDJ45X2zDph0ksTIh_kkjNpgx2iwj8I07UY6RlzAr-qsMjURUW3Yx';
 export const Yelp = {
-  search(term, location, sortBy){
-    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`,{
+  search(mood, latitude, longitude){
+    console.log(mood);
+    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${mood}&latitude=${latitude}&longitude=${longitude}&sortBy=distance`,{
       headers:{
-        Authorization: `Bearer ${apiKey}`
+        Authorization: `Bearer ${apiKey}`,
       }
     }).then(response => {
       return response.json();

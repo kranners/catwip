@@ -10,3 +10,23 @@
   flex-direction: row;
   align-self: center;
 }
+
+.eventWindow {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  top: 20%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  z-index: 10;
+  overflow: hidden;
+  transition: margin 0.3s ease-in-out;
+}
+
+.noshow {
+  margin-left: -100%;
+}
