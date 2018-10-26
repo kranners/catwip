@@ -1,0 +1,57 @@
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+.moodwrapper {
+  display: flex;
+  flex-direction: row;
+  vertical-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.textbox {
+  font-family: 'Gilroy-ExtraBold', sans-serif;
+  font-size: 20px;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.left {
+  height: 100%;
+  width: 30%;
+  text-align: center;
+}
+
+.right {
+  height: 100%;
+  width: 70%;
+}
+
+.megawrapper {
+  vertical-align: center;
+  height: 80%;
+  text-align: center;
+}
+
+figure{
+    margin-left: 50%;
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    line-height: 1.7em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(https://image.flaticon.com/icons/png/128/2/2046.png);
+    opacity: 0.5;
+    filter: brightness(200%);
+    cursor: pointer;
+}
+
+.spin {
+  animation: spin 0.5s ease-in-out forwards;
+}

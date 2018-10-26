@@ -10,15 +10,7 @@
   user-select: none;
   margin-left: 15px;
   margin-bottom: 15%;
-}
-
-.subtitle {
-  font-family: 'Gilroy-ExtraBold', sans-serif;
-  font-size: 15px;
-  display: inline-block;
-  opacity: 0.5;
-  user-select: none;
-  margin-bottom: 15%;
+  float: left;
 }
 
 .slide {
@@ -30,6 +22,7 @@
   background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
   animation: Gradient 15s ease infinite;
   background-size: 600% 400%;
+  position: relative;
 }
 
 .name {
@@ -45,7 +38,7 @@
 
 .transport {
   max-width: 50px;
-  margin-left: 33%;
+  margin-left: 150px;
 }
 
 .inputForm {
@@ -57,8 +50,50 @@
   transition: opacity 0.3s ease-in-out;
 }
 
+.moodForm {
+  opacity: 0.7;
+  height: 30%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.buttonWrapper {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin-left: 103%;
+}
+
+.goButton {
+  max-height: 50px;
+  height: 50px;
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  width: 106%;
+  font-family: 'Gilroy-Light', sans-serif;
+  font-size: 35px;
+  background-color: black;
+  opacity: 0.5;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  bottom: 0;
+  outline: none;
+  float: left;
+  word-wrap: break-word;
+}
+
+.goButton:hover {
+  opacity: 0.7;
+}
+
 .hidden {
   opacity: 0;
+  user-select: none;
 }
 
 .centerText {

@@ -4,19 +4,26 @@ import React from 'react';
 import './MoodSlide.css';
 import {LocationSearchInput} from '../../util/LocationSearchInput';
 import {TransportChanger} from '../TransportChanger/TransportChanger';
+import {MoodChanger} from '../MoodChanger/MoodChanger';
 
 export class MoodSlide extends React.Component {
   constructor(props){
     super(props);
-    this.state = {transportChoice:"car", selectedUser:this.props.selectedUser}
+    this.state = {transportChoice:"car", selectedUser:this.props.selectedUser, mood:'club', workingOn:'user'}
     this.handleTransportChange = this.handleTransportChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handleMoodChange = this.handleMoodChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
     let newUser = nextProps.selectedUser;
     this.setState(currentState => ({ selectedUser: newUser }), () => {});
+  }
+
+  handleMoodChange(newMood){
+    console.log(newMood);
+    this.setState(currentState => ({ mood : newMood }), () => {});
   }
 
   handleTransportChange(choice){
@@ -52,8 +59,11 @@ export class MoodSlide extends React.Component {
           <div className="transport"><TransportChanger initValue={this.state.selectedUser.travelType} onChange={this.handleTransportChange}/></div>
         </div>
         <div className="centerText"><a>{this.props.userMade ? "" : "Start by adding someone!"}</a></div>
-        <div className="inputForm">
-
+        <div className={"moodForm"+(this.props.userSelected && this.props.userMade ? "" : " hidden")}>
+          <MoodChanger onChange={this.handleMoodChange}/>
+        </div>
+        <div className="buttonWrapper">
+          <button className={"goButton"+(this.props.userSelected && this.props.userMade ? "" : " hidden")}>{"Let's go!"}</button>
         </div>
       </div>
       </div>
