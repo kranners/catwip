@@ -8,11 +8,16 @@ export class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = { address: '' };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = address => {
     this.setState({ address });
   };
+
+  componentWillReceiveProps(nextProps){
+    this.handleChange(nextProps.initValue);
+  }
 
   handleSelect = address => {
     geocodeByAddress(address)
@@ -38,11 +43,11 @@ export class LocationSearchInput extends React.Component {
           <div>
             <input
               {...getInputProps({
-                placeholder: 'Search places ...',
+                placeholder: "Where they're coming from..",
                 className: 'location-search-input',
               })}
-            />
-            <div className="autocomplete-dropdown-container">
+            style={{textAlign: 'center', outline: 'none'}}/>
+            <div className="autocomplete-dropdown-container" style={{fontSize: '15px'}}>
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
                 const className = suggestion.active
@@ -50,8 +55,8 @@ export class LocationSearchInput extends React.Component {
                   : 'suggestion-item';
                 // inline style for demonstration purpose
                 const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                  ? { backgroundColor: 'transparent', cursor: 'pointer' }
+                  : { backgroundColor: 'transparent', cursor: 'pointer' };
                 return (
                   <div
                     {...getSuggestionItemProps(suggestion, {

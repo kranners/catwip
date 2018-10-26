@@ -13,9 +13,10 @@ export class User extends React.Component {
       id: this.props.id,
       fade: false,
       hover: false,
-      clicked: false,
-      colorh: this.props.colorh,
-      colors: this.props.colors
+      clicked: 'nothing',
+      onSelect: this.props.onSelect,
+      editing: false,
+      edittext: ""
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
@@ -24,6 +25,15 @@ export class User extends React.Component {
     this.handleHoverOn = this.handleHoverOn.bind(this);
     this.handleHoverOff = this.handleHoverOff.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState(currentState => ({
+      name: nextProps.name,
+      address: nextProps.address,
+      travelType: nextProps.travelType,
+      editing: nextProps.edited
+    }), () => {});
   }
 
   //This method handles name changes for individual users
@@ -58,39 +68,24 @@ export class User extends React.Component {
   }
 
   handleClick(){
-    this.setState({ click: this.state.click ? false : true });
+    var user = {
+      name:this.state.name,
+      address:this.state.address,
+      travelType:this.state.travelType,
+      usercolor:this.state.usercolor,
+      id:this.state.id
+    };
+    this.props.onSelect(user);
   }
 
   render() {
     return (
       <div className="User" id="container" onMouseOver={this.handleHoverOn} onMouseOut={this.handleHoverOff}>
         <div className={(this.state.hover ? ' hover' : ' nohover')} id={ this.state.fade ? 'fade' : '' }>
-          <div className={"portrait"+(this.state.click ? " clicked" : " notclicked")} style={{backgroundColor: this.state.usercolor}} onClick={this.handleClick}></div>
-          <input type="text" id="name" color={("hsl("+this.state.colorh+"%, "+this.state.colors+"%, 20%")}placeholder={this.state.click ? "Their name..." : ""} onChange={this.handleNameChange} />
+          <div className={"portrait "+(this.state.click)} style={{backgroundColor: this.state.usercolor}} onClick={this.handleClick}><a id="name">{this.state.name+this.state.edittext}</a></div>
           <button ref='button' id="closebutton" onClick={this.fadeOut}>{this.state.hover ? 'x' : ''}</button>
         </div>
       </div>
     )
-    /*return (
-      <div className="User">
-        <div className="container">
-          <div className="portrait" style={{backgroundColor: this.state.usercolor}}></div>
-          <input type="text" id="name" placeholder={this.state.id} onChange={this.handleNameChange} />
-        </div>
-        <div className="container">
-          <LocationSearchInput onChange={this.handleAddressChange}/>
-        </div>
-        <div className="container">
-          <select id="transport" name="transport" onChange={this.handleTransportChange} >
-            <option value="car">Car</option>
-            <option value="public">Public Transport</option>
-            <option value="bike">Bicycle</option>
-            <option value="walk">Walking</option>
-          </select>
-          <img className="icon" src={deleteSrc} alt='delete'/>
-          <img className="icon" src={duplicateSrc} alt='duplicate' />
-        </div>
-      </div>
-    )*/
   }
 }

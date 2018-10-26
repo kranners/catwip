@@ -18,6 +18,28 @@
   to {transform: scale(0,0)}
 }
 
+@keyframes embiggen {
+  from {transform: scale(1,1)}
+  to {transform: scale(2,3)}
+}
+
+@keyframes emsmallen {
+  from {transform: scale(2,3)}
+  to {transform: scale(1,1)}
+}
+
+.clicked {
+  animation: embiggen 0.3s forwards;
+  transform-origin: top left;
+  zIndex: -1;
+}
+
+.notclicked {
+  transform-origin: top left;
+  animation: emsmallen 0.3s forwards;
+  z-index: 0;
+}
+
 #container {
   margin-left: auto; margin-right: auto;
 }
@@ -46,16 +68,33 @@ input[type=text], select {
     margin: 8px 0;
     border: none;
     background: transparent;
+    opacity: 0.7;
+}
+
+#closebutton {
+  position: absolute;
+	cursor:pointer;
+	color:#787878;
+  border: none;
+	font-family:Arial;
+	font-size:17px;
+  float: right;
+  margin-top: -8rem;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 #name {
-  font-family: 'Raleway', sans-serif;
-  font-size: 15px;
-  width: 8rem;
-  height: 20px;
+  font-family: 'Gilroy-ExtraBold', sans-serif;
+  font-size: 24px;
+  opacity: 0.4;
+  user-select: none;
+  overflow: hidden;
+  display: flex;
   text-align: center;
-  position: relative;
-  top: -2rem;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .portrait {
@@ -64,15 +103,4 @@ input[type=text], select {
   border-radius: 5px;
 }
 
-#closebutton {
-  position: inherit;
-	background-color:transparent;
-	cursor:pointer;
-	color:#787878;
-  border: none;
-	font-family:Arial;
-	font-size:17px;
-  float: right;
-  margin-top: -10.4rem;
-  z-index: 100;
-}
+#closebutton:focus {outline:0;}

@@ -1,8 +1,19 @@
+@keyframes hover {
+  from {background-color: transparent}
+  to {background-color: #f8f8f8}
+}
+
+@keyframes hoveroff {
+  from {background-color: #f8f8f8}
+  to {background-color: transparent}
+}
+
 .list {
-  align-self: center;
-  display: inline-grid;
-  grid-template-columns: 8rem 8rem 8rem 8rem;
-  grid-gap: 10px;
+  margin-top: 25px;
+  width: 30%;
+  display: grid;
+  grid-template-columns: repeat(4, 3fr);
+  grid-gap: 1px;
 }
 .button {
   align-self: center;
@@ -15,6 +26,18 @@
 	text-decoration:none;
   cursor: pointer;
   margin-left: 10px;
+  animation: hoveroff 0.3s forwards;
+  user-select: none; 
+}
+.button:hover {
+  animation: hover 0.3s forwards;
 }
 
 .button:focus {outline:0;}
+
+.noshow {
+  display: none;
+}
+.show {
+  display: block;
+}

@@ -1,0 +1,38 @@
+figure{
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    margin-right: 10px;
+    line-height: 1.7em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: background-image 0.3s ease-in-out;
+    opacity: 0.5;
+    filter: brightness(200%);
+    cursor: pointer;
+}
+
+figure img{
+   display:inline-block;
+   width: 30px;
+   height: auto;
+   align-self: center;
+}
+
+.car {
+  background-image: url(https://image.flaticon.com/icons/svg/31/31126.svg);
+}
+
+.public {
+  background-image: url(https://image.flaticon.com/icons/svg/66/66273.svg);
+}
+
+.bike {
+  background-image: url(https://image.flaticon.com/icons/svg/71/71422.svg);
+}
+
+.walk {
+  background-image: url(https://image.flaticon.com/icons/svg/10/10624.svg);
+}
