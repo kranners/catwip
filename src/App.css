@@ -1,3 +1,37 @@
+@keyframes hideWindow {
+  from {transform: translateY(0%);}
+  to {transform: translateY(-300%);}
+}
+
+@keyframes showWindow {
+  from {transform: translateY(-300%);}
+  to {transform: translateY(0%);}
+}
+
+.initialwindow {
+  opacity: 0;
+}
+
+.filter {
+  min-height: 100px;
+  min-width: 100px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade {
+  background-color: black;
+  opacity:0.7;
+}
+
+.hidefilter {
+  opacity: 0;
+  display: none;
+}
+
 .container {
   position: absolute;
   width: 55%;
@@ -12,6 +46,8 @@
 }
 
 .eventWindow {
+  color: white;
+  background-color: black;
   position: absolute;
   width: 40%;
   height: 40%;
@@ -24,9 +60,13 @@
   align-self: center;
   z-index: 10;
   overflow: hidden;
-  transition: margin 0.3s ease-in-out;
 }
 
-.noshow {
-  margin-left: -100%;
+.show {
+  opacity: 1;
+  animation: showWindow 0.5s ease-in-out forwards;
+}
+
+.hidewindow {
+  animation: hideWindow 0.5s ease-in-out forwards;
 }

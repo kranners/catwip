@@ -9,7 +9,7 @@ import {MoodChanger} from '../MoodChanger/MoodChanger';
 export class MoodSlide extends React.Component {
   constructor(props){
     super(props);
-    this.state = {transportChoice:"car", selectedUser:this.props.selectedUser, mood:'party', workingOn:'user'}
+    this.state = {transportChoice:"car", selectedUser:this.props.selectedUser, mood:'bar', workingOn:'user'}
     this.handleTransportChange = this.handleTransportChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
@@ -72,6 +72,7 @@ export class MoodSlide extends React.Component {
           <button className={"goButton"+(this.props.userSelected && this.props.userMade ? "" : " hidden")} onClick={this.handleEventMade}>{"Let's go!"}</button>
         </div>
       </div>
+      <a className="subtitle">Made with ❤️ by Aaron Pierce</a>
       </div>
     )
   }
